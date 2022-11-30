@@ -10,6 +10,7 @@ source ~/.bash_profile
 ```bash
 echo $MYGIT
 ```
+# 1. Finding Homologs with BLAST
 ```bash
 cd ~/labs/lab3-$MYGIT
 ```
@@ -55,6 +56,7 @@ wc -l PIK.blastp.detail.filtered.out
 ```bash
 grep -o -E "^[A-Z][a-z]+\." PIK.blastp.detail.filtered.out  | sort | uniq -c
 ```
+# 2. Gene Family Sequence Alignment
 ```bash
 conda install -y -n base -c conda-forge aha
 ```
@@ -92,6 +94,7 @@ alv -kli  ~/labs/lab4-$MYGIT/PIK/PIK.homologs.al.fas | less -RS
 ```bash
 alv -kli --majority ~/labs/lab4-$MYGIT/PIK/PIK.homologs.al.fas | less -RS
 ```
+# 3. IQ-Tree Gene Family Phylogeny
 ```bash
 mkdir ~/labs/lab5-$MYGIT/PIK
 ```
@@ -122,6 +125,7 @@ nw_order -c n ~/labs/lab5-$MYGIT/PIK/PIK.homologs.al.mid.treefile | nw_display -
 ```bash
 nw_order -c n ~/labs/lab5-$MYGIT/PIK/PIK.homologs.al.mid.treefile | nw_topology - | nw_display -s  -w 1000 > ~/labs/lab5-$MYGIT/PIK/PIK.homologs.al.midCl.treefile.svg -
 ```
+# 4. Reconciling Gene and Species Tree
 ```bash
 cd ~/labs/lab6-$MYGIT/gqr
 ```
@@ -143,6 +147,7 @@ python2.7 ~/tools/recPhyloXML/python/NOTUNGtoRecPhyloXML.py -g ~/labs/lab6-$MYGI
 ```bash
 thirdkind -Iie -D 40 -f ~/labs/lab6-$MYGIT/PIK/PIK.homologs.al.mid.treefile.reconciled.xml -o  ~/labs/lab6-$MYGIT/PIK/PIK.homologs.al.mid.treefile.reconciled.svg
 ```
+# 5. Gene Family Domain Prediction
 ```bash
 mkdir ~/labs/lab8-$MYGIT/PIK
 ```
@@ -176,8 +181,6 @@ awk '{a=$4-$3;print $1,'\t',a;}' ~/labs/lab8-$MYGIT/PIK/PIK.rps-blast.out |  sor
 ```bash
 sort  -k5rg ~/labs/lab8-$MYGIT/PIK/PIK.rps-blast.out | less -S
 ```
-
-
 
 
 
