@@ -1,6 +1,7 @@
-# Bio 312 EC
+# Bio 312 EC for Gene Family
 *All commands for the PI3K gene family for the Term Paper project*
 
+The following commands are done to create a variable of a github username that will help access files and push files. 
 ```bash
 echo 'export MYGIT="myusername"' >>~/.bash_profile
 ```
@@ -10,7 +11,8 @@ source ~/.bash_profile
 ```bash
 echo $MYGIT
 ```
-# 1. Finding Homologs with BLAST
+# 1. Homologs Using BLAST
+The commands provided in this section are to find the homologous sequences of PI3K genes using proteome data to create a BLAST database. An e-value restriction of 1e-35 will yield 41 homologous sequences. This consisted of the 9 bilaterian species: *Homo sapiens, Branchiostoma belcheri, Mizuhopectan yessoensis, Acanthaster planci, Ciona intestinalis, Drosophila melanogaster, Adineta vage, Echinococcus granulosus, Lingula anatina* 
 ```bash
 cd ~/labs/lab3-$MYGIT
 ```
@@ -57,10 +59,9 @@ wc -l PIK.blastp.detail.filtered.out
 grep -o -E "^[A-Z][a-z]+\." PIK.blastp.detail.filtered.out  | sort | uniq -c
 ```
 # 2. Gene Family Sequence Alignment
+The commands in this section allow for a sequence alignment to be done with the sequences found in part #1. The program MUSCLE is used to do so, along with the programs alignbuddy and t_coffee, to calculate the length,width of the alignment, as well as the percent identity.
 ```bash
 conda install -y -n base -c conda-forge aha
-```
-```bash
 sudo yum install -y a2ps
 pip install buddysuite
 ```
@@ -95,6 +96,7 @@ alv -kli  ~/labs/lab4-$MYGIT/PIK/PIK.homologs.al.fas | less -RS
 alv -kli --majority ~/labs/lab4-$MYGIT/PIK/PIK.homologs.al.fas | less -RS
 ```
 # 3. IQ-Tree Gene Family Phylogeny
+The commands in this section use the program IQ-Tree to create a phylogenetic tree based on the alignment conducted in the previous section. First, the species tree is generated of the nine species. A newick tree is produced to provide a quick glance at the gene family evolution, as well as a cladogram and phylogram of the gene tree. The end result is a midpoint-rooted tree with bootstrap values.
 ```bash
 mkdir ~/labs/lab5-$MYGIT/PIK
 ```
@@ -126,6 +128,7 @@ nw_order -c n ~/labs/lab5-$MYGIT/PIK/PIK.homologs.al.mid.treefile | nw_display -
 nw_order -c n ~/labs/lab5-$MYGIT/PIK/PIK.homologs.al.mid.treefile | nw_topology - | nw_display -s  -w 1000 > ~/labs/lab5-$MYGIT/PIK/PIK.homologs.al.midCl.treefile.svg -
 ```
 # 4. Reconciling Gene and Species Tree
+The commands in this section create a reconciled species and gene tree of the PI3K gene family using the package Notung, and the program thirkind to view it superimposed.
 ```bash
 cd ~/labs/lab6-$MYGIT/gqr
 ```
@@ -148,6 +151,7 @@ python2.7 ~/tools/recPhyloXML/python/NOTUNGtoRecPhyloXML.py -g ~/labs/lab6-$MYGI
 thirdkind -Iie -D 40 -f ~/labs/lab6-$MYGIT/PIK/PIK.homologs.al.mid.treefile.reconciled.xml -o  ~/labs/lab6-$MYGIT/PIK/PIK.homologs.al.mid.treefile.reconciled.svg
 ```
 # 5. Gene Family Domain Prediction
+Pfam domains along with RPS-BLAST were used to predict the associated protein domains of PI3K genes. 
 ```bash
 mkdir ~/labs/lab8-$MYGIT/PIK
 ```
