@@ -1,7 +1,15 @@
 # Bio 312 EC for Gene Family
 *All commands for the PI3K gene family for the Term Paper project*
+# Contents
+1. Homologs Using BLAST
+2. Gene Family Sequence Alignment
+3. IQ-Tree Gene Family Phylogeny
+4. Reconciling Gene and Species Tree
+5. Gene Family Domain Prediction
 
-The following commands are done to create a variable of a github username that will help access files and push files. 
+
+
+*The following commands are done to create a variable of a github username that will help access files and push files.*
 ```bash
 echo 'export MYGIT="myusername"' >>~/.bash_profile
 ```
