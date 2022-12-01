@@ -185,6 +185,24 @@ awk '{a=$4-$3;print $1,'\t',a;}' ~/labs/lab8-$MYGIT/PIK/PIK.rps-blast.out |  sor
 ```bash
 sort  -k5rg ~/labs/lab8-$MYGIT/PIK/PIK.rps-blast.out | less -S
 ```
+# Final Push
+*To make sure all files are added to repository*
+```bash
+find . -size +5M | sed 's|^\./||g' | cat >> .gitignore; awk '!NF || !seen[$0]++' .gitignore
+```
+```bash
+git add .
+```
+```bash
+git commit -a -m "Adding new data files to the repository."
+```
+```bash
+git pull --no-edit
+```
+```bash
+git push
+```
+
 
 
 
